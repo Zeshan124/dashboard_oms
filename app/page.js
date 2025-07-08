@@ -1,12 +1,8 @@
-// File: app/page.js
-// Enhanced attractive login page with semi-transparent form
-
 "use client";
 
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
-import Image from "next/image";
 import LoginPage from "./auth/login/page";
 
 export default function Home() {

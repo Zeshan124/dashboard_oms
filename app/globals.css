@@ -8,13 +8,11 @@
   }
 
   .container {
-  width: 85%;
-  margin-left: auto;
-  margin-right: auto;
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
-}
-
-
 
 @layer base {
   :root {
@@ -72,8 +70,6 @@
   }
 }
 
-
-
 @layer base {
   * {
     @apply border-border;
@@ -81,4 +77,52 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+@keyframes float-slow {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate(50px, 50px) rotate(5deg);
+  }
+}
+@keyframes float-medium {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate(-30px, 30px) rotate(-3deg);
+  }
+}
+@keyframes float-fast {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate(20px, -20px) rotate(2deg);
+  }
+}
+@keyframes float {
+  0% {
+    transform: translateY(0) translateX(0);
+  }
+  50% {
+    transform: translateY(-20px) translateX(10px);
+  }
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+}
+.animate-float-slow {
+  animation: float-slow 15s ease-in-out infinite;
+}
+.animate-float-medium {
+  animation: float-medium 12s ease-in-out infinite;
+}
+.animate-float-fast {
+  animation: float-fast 9s ease-in-out infinite;
 }

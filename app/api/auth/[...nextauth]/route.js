@@ -1,5 +1,5 @@
-import NextAuth from "next-auth"
-import CredentialsProvider from "next-auth/providers/credentials"
+import NextAuth from "next-auth";
+import CredentialsProvider from "next-auth/providers/credentials";
 
 export const authOptions = {
   providers: [
@@ -7,30 +7,33 @@ export const authOptions = {
       name: "credentials",
       credentials: {
         username: { label: "Username", type: "text" },
-        password: { label: "Password", type: "password" }
+        password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
         if (!credentials?.username || !credentials?.password) {
-          return null
+          return null;
         }
 
         try {
-          const response = await fetch("https://boms.qistbazaar.pk/api/user/login", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              username: credentials.username,
-              password: credentials.password,
-            }),
-          })
+          const response = await fetch(
+            "https://boms.qistbazaar.pk/api/user/login",
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                username: credentials.username,
+                password: credentials.password,
+              }),
+            }
+          );
 
           if (!response.ok) {
-            return null
+            return null;
           }
 
-          const data = await response.json()
+          const data = await response.json();
 
           if (data.token) {
             return {
@@ -45,44 +48,44 @@ export const authOptions = {
               branchCode: data.branchCode,
               branchCodeAlias: data.branchCodeAlias,
               storeBranch: data.storeBranch,
-            }
+            };
           }
 
-          return null
+          return null;
         } catch (error) {
-          console.error("Login error:", error)
-          return null
+          console.error("Login error:", error);
+          return null;
         }
-      }
-    })
+      },
+    }),
   ],
   callbacks: {
     async jwt({ token, user }) {
       // Store the JWT token and user data in the JWT token
       if (user) {
-        token.accessToken = user.token
-        token.roleID = user.roleID
-        token.role = user.role
-        token.branchID = user.branchID
-        token.branchName = user.branchName
-        token.branchCode = user.branchCode
-        token.branchCodeAlias = user.branchCodeAlias
-        token.storeBranch = user.storeBranch
+        token.accessToken = user.token;
+        token.roleID = user.roleID;
+        token.role = user.role;
+        token.branchID = user.branchID;
+        token.branchName = user.branchName;
+        token.branchCode = user.branchCode;
+        token.branchCodeAlias = user.branchCodeAlias;
+        token.storeBranch = user.storeBranch;
       }
-      return token
+      return token;
     },
     async session({ session, token }) {
       // Send properties to the client
-      session.accessToken = token.accessToken
-      session.user.roleID = token.roleID
-      session.user.role = token.role
-      session.user.branchID = token.branchID
-      session.user.branchName = token.branchName
-      session.user.branchCode = token.branchCode
-      session.user.branchCodeAlias = token.branchCodeAlias
-      session.user.storeBranch = token.storeBranch
-      return session
-    }
+      session.accessToken = token.accessToken;
+      session.user.roleID = token.roleID;
+      session.user.role = token.role;
+      session.user.branchID = token.branchID;
+      session.user.branchName = token.branchName;
+      session.user.branchCode = token.branchCode;
+      session.user.branchCodeAlias = token.branchCodeAlias;
+      session.user.storeBranch = token.storeBranch;
+      return session;
+    },
   },
   pages: {
     signIn: "/auth/login", // Custom login page
@@ -102,8 +105,8 @@ export const authOptions = {
     },
   },
   secret: process.env.NEXTAUTH_SECRET,
-}
+};
 
-const handler = NextAuth(authOptions)
+const handler = NextAuth(authOptions);
 
-export { handler as GET, handler as POST }
+export { handler as GET, handler as POST };
