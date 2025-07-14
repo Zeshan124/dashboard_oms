@@ -14,6 +14,8 @@ import DepartmentOverview from "./DepartmentOverview";
 import Header from "./Header";
 import AddEmployee from "../employees/AddEmployee";
 import AllEmployees from "../employees/AllEmployees";
+import Payroll from "../payroll/Payroll";
+import Complaint from "../complaint/Complaint";
 
 export default function DashboardContent({
   userData,
@@ -26,20 +28,8 @@ export default function DashboardContent({
 
   const [selectedPeriod, setSelectedPeriod] = useState("This Month");
   const [activeComponent, setActiveComponent] = useState(
-    initialActiveComponent
+    initialActiveComponent || "dashboard"
   );
-
-  const router = useRouter();
-  const searchParams = useSearchParams();
-
-  // Update URL when component changes
-  useEffect(() => {
-    if (activeComponent !== "dashboard") {
-      router.push(`/dashboard?component=${activeComponent}`, { scroll: false });
-    } else {
-      router.push("/dashboard", { scroll: false });
-    }
-  }, [activeComponent, router]);
 
   // Component rendering function
   const renderActiveComponent = () => {
@@ -47,6 +37,14 @@ export default function DashboardContent({
       case "dashboard":
         return (
           <>
+            <div className="flex items-center justify-between py-4">
+              <div>
+                <h1 className="text-3xl font-bold">Dashboard</h1>
+                <p className="text-gray-600 mt-1">
+                  Manage and view all employees in your organization
+                </p>
+              </div>
+            </div>
             <MetricsCards hrStats={hrStats} />
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
               <RecentEmployees employees={recentEmployees} />
@@ -73,8 +71,13 @@ export default function DashboardContent({
       case "org-chart":
         return <OrgChart />;
 
-      case "job-postings":
-        return <div>Job Postings Component</div>;
+      // Payroll component
+      case "payroll":
+        return <Payroll />;
+
+      // Complaint
+      case "complaint":
+        return <Complaint />;
 
       case "candidates":
         return <div>Candidates Component</div>;
@@ -94,7 +97,6 @@ export default function DashboardContent({
 
   return (
     <div className="min-h-screen bg-gray-50 flex">
-      {/* Sidebar */}
       <Sidebar
         user={user}
         role={role}
@@ -103,18 +105,7 @@ export default function DashboardContent({
         activeComponent={activeComponent}
         setActiveComponent={setActiveComponent}
       />
-
-      {/* Main Content */}
       <div className="flex-1 flex flex-col overflow-hidden">
-        {/* Header */}
-        <Header
-          user={user}
-          selectedPeriod={selectedPeriod}
-          setSelectedPeriod={setSelectedPeriod}
-          activeComponent={activeComponent}
-        />
-
-        {/* Main Dashboard Content */}
         <div className="flex-1 overflow-y-auto p-6">
           <div className="max-w-7xl mx-auto">{renderActiveComponent()}</div>
         </div>

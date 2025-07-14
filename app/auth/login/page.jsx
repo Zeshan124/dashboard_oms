@@ -12,7 +12,7 @@ export default function LoginPage() {
           <div className="absolute top-1/3 right-0 w-[500px] h-[500px] bg-gradient-to-bl from-pink-400/20 to-purple-600/20 rounded-full blur-[100px] animate-float-medium delay-1000"></div>
           <div className="absolute bottom-0 left-1/3 w-[400px] h-[400px] bg-gradient-to-tr from-indigo-400/20 to-blue-600/20 rounded-full blur-[100px] animate-float-fast delay-500"></div>
 
-          {/* Floating particles */} 
+          {/* Floating particles */}
           {[...Array(20)].map((_, i) => (
             <div
               key={i}
@@ -32,8 +32,8 @@ export default function LoginPage() {
         </div>
         <div className="relative z-10 min-h-screen flex">
           {/* Left Side - Hero Section */}
-          <div className="hidden lg:flex lg:w-1/2 flex-col justify-center px-12 xl:px-20">
-            <div className="max-w-lg">
+          <div className="hidden lg:flex lg:w-1/2 flex-col justify-center px-12 xl:px-0">
+            <div className="max-w-full">
               <div className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 mb-8 hover:bg-white/20 transition-colors duration-300">
                 <Sparkles className="w-4 h-4 text-yellow-300 mr-2 animate-pulse" />
                 <span className="text-white/90 text-sm font-medium">
@@ -44,7 +44,7 @@ export default function LoginPage() {
                 Qist Bazaar
                 <br />
                 <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-                  OMS
+                  HR Management Portal
                 </span>
               </h1>
               <p className="text-lg text-white/80 mb-8 leading-relaxed">
@@ -108,7 +108,7 @@ export default function LoginPage() {
           </div>
 
           {/* Right Side - Login Form */}
-          <div className="w-full lg:w-1/2 flex items-center justify-center px-6 py-12">
+          <div className="w-full lg:w-1/2 flex items-center justify-center px-1 py-12">
             <div className="w-full max-w-md">
               {/* Mobile header */}
               <div className="lg:hidden text-center mb-8">

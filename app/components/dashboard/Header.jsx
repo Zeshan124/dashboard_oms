@@ -13,7 +13,7 @@ export default function Header({ user, selectedPeriod, setSelectedPeriod }) {
             <p className="text-gray-600">Welcome back, {user?.name}!</p>
           </div>
         </div>
-        
+
         <div className="flex items-center space-x-4">
           {/* Period Selector */}
           <div className="relative">
@@ -22,13 +22,13 @@ export default function Header({ user, selectedPeriod, setSelectedPeriod }) {
               <ChevronDown className="w-4 h-4" />
             </Button>
           </div>
-          
+
           {/* Quick Actions */}
           <Button size="sm" className="bg-blue-600 hover:bg-blue-700">
             <UserPlus className="w-4 h-4 mr-2" />
             Add Employee
           </Button>
-          
+
           {/* Notifications */}
           <Button variant="outline" size="sm" className="relative">
             <Bell className="w-4 h-4" />
