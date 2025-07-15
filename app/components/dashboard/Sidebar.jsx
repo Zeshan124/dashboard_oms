@@ -69,18 +69,18 @@ export default function Sidebar({
           path: "/employees",
           componentId: "add-employee",
         },
-        {
-          id: "employee-profiles",
-          label: "Profiles",
-          path: "/employees/profiles",
-          componentId: "employee-profiles",
-        },
-        {
-          id: "org-chart",
-          label: "Organization Chart",
-          path: "/employees/org-chart",
-          componentId: "org-chart",
-        },
+        // {
+        //   id: "employee-profiles",
+        //   label: "Profiles",
+        //   path: "/employees/profiles",
+        //   componentId: "employee-profiles",
+        // },
+        // {
+        //   id: "org-chart",
+        //   label: "Organization Chart",
+        //   path: "/employees/org-chart",
+        //   componentId: "org-chart",
+        // },
       ],
     },
     {
@@ -96,13 +96,28 @@ export default function Sidebar({
           path: "/payrolls",
           componentId: "payroll",
         },
+        // {
+        //   id: "payroll-processing",
+        //   label: "Payroll Processing",
+        //   path: "/payroll/processing",
+        // },
+        // { id: "tax-management", label: "Tax Management", path: "/payroll/tax" },
+        // { id: "payslips", label: "Payslips", path: "/payroll/payslips" },
+      ],
+    },
+    {
+      id: "leavemanagement",
+      label: "Leave Management",
+      icon: CreditCard,
+      path: "/leavemanagement",
+      badge: null,
+      subItems: [
         {
-          id: "payroll-processing",
-          label: "Payroll Processing",
-          path: "/payroll/processing",
+          id: "leavemanagement",
+          label: "Leaves",
+          path: "/leavemanagement",
+          componentId: "leavemanagement", // Component ID referencing your LeaveManagement.jsx
         },
-        { id: "tax-management", label: "Tax Management", path: "/payroll/tax" },
-        { id: "payslips", label: "Payslips", path: "/payroll/payslips" },
       ],
     },
     {
@@ -120,123 +135,109 @@ export default function Sidebar({
         },
       ],
     },
-    {
-      id: "attendance",
-      label: "Attendance",
-      icon: Calendar,
-      path: "/attendance",
-      badge: null,
-      subItems: [
-        {
-          id: "daily-attendance",
-          label: "Daily Attendance",
-          path: "/attendance/daily",
-        },
-        {
-          id: "monthly-report",
-          label: "Monthly Report",
-          path: "/attendance/monthly",
-        },
-        {
-          id: "time-tracking",
-          label: "Time Tracking",
-          path: "/attendance/tracking",
-        },
-      ],
-    },
-    {
-      id: "leave",
-      label: "Leave Management",
-      icon: CalendarDays,
-      path: "/leave",
-      badge: "8",
-      subItems: [
-        {
-          id: "leave-requests",
-          label: "Leave Requests",
-          path: "/leave/requests",
-        },
-        {
-          id: "leave-calendar",
-          label: "Leave Calendar",
-          path: "/leave/calendar",
-        },
-        {
-          id: "leave-policies",
-          label: "Leave Policies",
-          path: "/leave/policies",
-        },
-        { id: "leave-balance", label: "Leave Balance", path: "/leave/balance" },
-      ],
-    },
-
     // {
-    //   id: "performance",
-    //   label: "Performance",
-    //   icon: Target,
-    //   path: "/performance",
-    //   badge: "23",
+    //   id: "attendance",
+    //   label: "Attendance",
+    //   icon: Calendar,
+    //   path: "/attendance",
+    //   badge: null,
     //   subItems: [
-    //     { id: "reviews", label: "Performance Reviews", path: "/performance/reviews" },
-    //     { id: "goals", label: "Goals & KPIs", path: "/performance/goals" },
-    //     { id: "feedback", label: "360 Feedback", path: "/performance/feedback" },
-    //     { id: "appraisals", label: "Appraisals", path: "/performance/appraisals" }
-    //   ]
+    //     {
+    //       id: "daily-attendance",
+    //       label: "Daily Attendance",
+    //       path: "/attendance/daily",
+    //     },
+    //     {
+    //       id: "monthly-report",
+    //       label: "Monthly Report",
+    //       path: "/attendance/monthly",
+    //     },
+    //     {
+    //       id: "time-tracking",
+    //       label: "Time Tracking",
+    //       path: "/attendance/tracking",
+    //     },
+    //   ],
     // },
-    {
-      id: "training",
-      label: "Training & Development",
-      icon: BookOpen,
-      path: "/training",
-      badge: null,
-      subItems: [
-        {
-          id: "training-programs",
-          label: "Training Programs",
-          path: "/training/programs",
-        },
-        {
-          id: "skill-assessment",
-          label: "Skill Assessment",
-          path: "/training/assessment",
-        },
-        {
-          id: "certifications",
-          label: "Certifications",
-          path: "/training/certifications",
-        },
-        {
-          id: "learning-paths",
-          label: "Learning Paths",
-          path: "/training/paths",
-        },
-      ],
-    },
-    {
-      id: "analytics",
-      label: "Analytics & Reports",
-      icon: BarChart3,
-      path: "/analytics",
-      badge: null,
-      subItems: [
-        { id: "hr-analytics", label: "HR Analytics", path: "/analytics/hr" },
-        {
-          id: "employee-reports",
-          label: "Employee Reports",
-          path: "/analytics/employees",
-        },
-        {
-          id: "attendance-reports",
-          label: "Attendance Reports",
-          path: "/analytics/attendance",
-        },
-        {
-          id: "custom-reports",
-          label: "Custom Reports",
-          path: "/analytics/custom",
-        },
-      ],
-    },
+    // {
+    //   id: "leave",
+    //   label: "Leave Management",
+    //   icon: CalendarDays,
+    //   path: "/leave",
+    //   badge: "8",
+    //   subItems: [
+    //     {
+    //       id: "leave-requests",
+    //       label: "Leave Requests",
+    //       path: "/leave/requests",
+    //     },
+    //     {
+    //       id: "leave-calendar",
+    //       label: "Leave Calendar",
+    //       path: "/leave/calendar",
+    //     },
+    //     {
+    //       id: "leave-policies",
+    //       label: "Leave Policies",
+    //       path: "/leave/policies",
+    //     },
+    //     { id: "leave-balance", label: "Leave Balance", path: "/leave/balance" },
+    //   ],
+    // },
+    // {
+    //   id: "training",
+    //   label: "Training & Development",
+    //   icon: BookOpen,
+    //   path: "/training",
+    //   badge: null,
+    //   subItems: [
+    //     {
+    //       id: "training-programs",
+    //       label: "Training Programs",
+    //       path: "/training/programs",
+    //     },
+    //     {
+    //       id: "skill-assessment",
+    //       label: "Skill Assessment",
+    //       path: "/training/assessment",
+    //     },
+    //     {
+    //       id: "certifications",
+    //       label: "Certifications",
+    //       path: "/training/certifications",
+    //     },
+    //     {
+    //       id: "learning-paths",
+    //       label: "Learning Paths",
+    //       path: "/training/paths",
+    //     },
+    //   ],
+    // },
+    // {
+    //   id: "analytics",
+    //   label: "Analytics & Reports",
+    //   icon: BarChart3,
+    //   path: "/analytics",
+    //   badge: null,
+    //   subItems: [
+    //     { id: "hr-analytics", label: "HR Analytics", path: "/analytics/hr" },
+    //     {
+    //       id: "employee-reports",
+    //       label: "Employee Reports",
+    //       path: "/analytics/employees",
+    //     },
+    //     {
+    //       id: "attendance-reports",
+    //       label: "Attendance Reports",
+    //       path: "/analytics/attendance",
+    //     },
+    //     {
+    //       id: "custom-reports",
+    //       label: "Custom Reports",
+    //       path: "/analytics/custom",
+    //     },
+    //   ],
+    // },
     // ... other menu items
   ];
 

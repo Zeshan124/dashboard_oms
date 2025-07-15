@@ -113,19 +113,15 @@ async function getDashboardData() {
 }
 
 export default async function Dashboard({ searchParams }) {
-  // Get session on server side
   const session = await getServerSession(authOptions);
   
-  // Redirect if not authenticated
   if (!session) {
     redirect('/auth/login');
   }
   
-  // Fetch user data and dashboard data on server side
   const userData = await getUserData(session);
   const dashboardData = await getDashboardData();
   
-  // Get active component from URL params (for navigation)
   const activeComponent = searchParams?.component || 'dashboard';
   
   return (

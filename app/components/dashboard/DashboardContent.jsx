@@ -11,11 +11,11 @@ import QuickActions from "./QuickActions";
 import MetricsCards from "./MetricsCards";
 import PendingActions from "./PendingActions";
 import DepartmentOverview from "./DepartmentOverview";
-import Header from "./Header";
 import AddEmployee from "../employees/AddEmployee";
 import AllEmployees from "../employees/AllEmployees";
 import Payroll from "../payroll/Payroll";
 import Complaint from "../complaint/Complaint";
+import LeaveManagement from "../leavemmanagement/LeaveManagement";
 
 export default function DashboardContent({
   userData,
@@ -37,7 +37,7 @@ export default function DashboardContent({
       case "dashboard":
         return (
           <>
-            <div className="flex items-center justify-between py-4">
+            <div className="flex items-center justify-between py-5">
               <div>
                 <h1 className="text-3xl font-bold">Dashboard</h1>
                 <p className="text-gray-600 mt-1">
@@ -50,11 +50,11 @@ export default function DashboardContent({
               <RecentEmployees employees={recentEmployees} />
               <PendingActions actions={pendingActions} />
             </div>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+            {/* <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
               <DepartmentOverview departmentData={departmentData} />
               <QuickAnalytics hrStats={hrStats} />
             </div>
-            <QuickActions />
+            <QuickActions /> */}
           </>
         );
 
@@ -74,6 +74,9 @@ export default function DashboardContent({
       // Payroll component
       case "payroll":
         return <Payroll />;
+
+      case "leavemanagement":
+        return <LeaveManagement />;
 
       // Complaint
       case "complaint":

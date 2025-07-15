@@ -42,7 +42,7 @@ export default function AddEmployee() {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="py-6 space-y-6 bg-gray-50 min-h-screen">
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-bold">All Employees</h1>
