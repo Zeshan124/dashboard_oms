@@ -1,68 +1,23 @@
 "use client";
-
 import { useState } from "react";
-
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import {Card, CardContent, CardDescription, CardHeader, CardTitle,} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogDescription,
-  DialogFooter,
-} from "@/components/ui/dialog";
-
-import {
-  Search,
-  Filter,
-  Download,
-  MoreHorizontal,
-  Mail,
-  Phone,
-  MapPin,
-  User,
-  Building,
-  CreditCard,
-  Save,
-  X,
-} from "lucide-react";
+import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue,} from "@/components/ui/select";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger,} from "@/components/ui/dropdown-menu";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter,} from "@/components/ui/dialog";
+import { Search, Filter, Download, MoreHorizontal, Mail, Phone, MapPin, User, Building, CreditCard, Save, X,} from "lucide-react";
 
 export default function AllEmployees() {
-  /* ------------------ state ------------------ */
   const [searchTerm, setSearchTerm] = useState("");
-  const [selected, setSelected] = useState(null); // detail‑view dialog
-  const [editingEmployee, setEditingEmployee] = useState(null); // edit form dialog
+  const [selected, setSelected] = useState(null); 
+  const [editingEmployee, setEditingEmployee] = useState(null); 
   const [formData, setFormData] = useState({});
 
-  /* ------------------ dummy data ------------------ */
   const employees = [
     {
       id: 1,
@@ -149,7 +104,6 @@ export default function AllEmployees() {
     },
   ];
 
-  /* ------------------ helpers ------------------ */
   const filteredEmployees = employees.filter((emp) =>
     [emp.name, emp.position, emp.department, emp.cnic]
       .join(" ")
@@ -211,7 +165,6 @@ export default function AllEmployees() {
   // };
 
   const handleUpdateEmployee = () => {
-    // Here you would typically call your update API
     console.log("Updating employee with data:", formData);
     alert(`Employee ${formData.name} updated successfully! (dummy action)`);
     setEditingEmployee(null);
@@ -223,10 +176,8 @@ export default function AllEmployees() {
     setFormData({});
   };
 
-  /* ------------------ JSX ------------------ */
   return (
     <div className="py-6 space-y-6 bg-gray-50 min-h-screen">
-      {/* ---------- Header ---------- */}
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-bold">All Employees</h1>
@@ -239,13 +190,9 @@ export default function AllEmployees() {
             <Download className="w-4 h-4 mr-2" />
             Export
           </Button>
-          {/* <Button size="sm" className="bg-blue-600 hover:bg-blue-700">
-            Add Employee
-          </Button> */}
         </div>
       </div>
 
-      {/* ---------- Search & Filter ---------- */}
       <Card>
         <CardContent className="p-6">
           <div className="flex items-center space-x-4">
@@ -266,7 +213,6 @@ export default function AllEmployees() {
         </CardContent>
       </Card>
 
-      {/* ---------- Employee List ---------- */}
       <Card>
         <CardHeader>
           <CardTitle>Employee Directory</CardTitle>
@@ -283,7 +229,6 @@ export default function AllEmployees() {
                 onClick={() => setSelected(emp)}
                 className="cursor-pointer flex items-center justify-between p-4 border rounded-lg hover:shadow-md transition-shadow"
               >
-                {/* ----- Left block ----- */}
                 <div className="flex items-center space-x-4">
                   <Avatar className="w-12 h-12">
                     <AvatarImage src={emp.avatar} />
@@ -387,7 +332,6 @@ export default function AllEmployees() {
           </button>
           {selected && (
             <div className="bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 rounded-lg shadow-lg">
-              {/* Profile Header */}
               <div className="flex flex-col items-center justify-center p-6 bg-gradient-to-br from-[#1334A5] via-[#011152] to-[#011152] text-white rounded-t-lg">
                 <Avatar className="w-20 h-20 mb-3 ring-4 ring-white shadow-lg">
                   <AvatarImage src={selected.avatar} />
@@ -406,10 +350,7 @@ export default function AllEmployees() {
                   {selected.status}
                 </Badge>
               </div>
-
-              {/* Info Sections */}
               <div className="p-6 space-y-6">
-                {/* Personal Info */}
                 <div className="bg-white rounded-lg shadow p-4 border border-blue-100">
                   <h4 className="font-semibold text-blue-700 mb-3 flex items-center gap-2">
                     <User className="w-4 h-4" /> Personal Information
@@ -443,8 +384,6 @@ export default function AllEmployees() {
                     </div>
                   </div>
                 </div>
-
-                {/* Bank Info */}
                 <div className="bg-blue-50 rounded-lg shadow p-4 border border-blue-100">
                   <h4 className="font-semibold mb-2 text-blue-700 flex items-center gap-2">
                     <CreditCard className="w-4 h-4" /> Bank Details
@@ -470,8 +409,6 @@ export default function AllEmployees() {
                     </div>
                   </div>
                 </div>
-
-                {/* Payroll Info */}
                 <div className="bg-purple-50 rounded-lg shadow p-4 border border-purple-100">
                   <h4 className="font-semibold mb-2 text-purple-700 flex items-center gap-2">
                     <CreditCard className="w-4 h-4" /> Payroll
@@ -510,8 +447,6 @@ export default function AllEmployees() {
           )}
         </DialogContent>
       </Dialog>
-
-      {/* ---------- Edit Employee Dialog ---------- */}
       <Dialog open={!!editingEmployee} onOpenChange={closeEditForm}>
         <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
           <DialogHeader>
@@ -523,10 +458,8 @@ export default function AllEmployees() {
               Update employee information and save changes.
             </DialogDescription>
           </DialogHeader>
-
           {editingEmployee && (
             <div className="space-y-6">
-              {/* Personal Information */}
               <div className="space-y-4">
                 <h3 className="text-lg font-semibold flex items-center gap-2">
                   <User className="w-4 h-4" />
@@ -598,8 +531,6 @@ export default function AllEmployees() {
                   </div>
                 </div>
               </div>
-
-              {/* Work Information */}
               <div className="space-y-4">
                 <h3 className="text-lg font-semibold flex items-center gap-2">
                   <Building className="w-4 h-4" />
@@ -660,8 +591,6 @@ export default function AllEmployees() {
                   </div>
                 </div>
               </div>
-
-              {/* Bank Information */}
               <div className="space-y-4">
                 <h3 className="text-lg font-semibold flex items-center gap-2">
                   <CreditCard className="w-4 h-4" />
@@ -703,8 +632,6 @@ export default function AllEmployees() {
                   </div>
                 </div>
               </div>
-
-              {/* Payroll Information */}
               <div className="space-y-4">
                 <h3 className="text-lg font-semibold">Payroll Information</h3>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -776,7 +703,6 @@ export default function AllEmployees() {
               </div>
             </div>
           )}
-
           <DialogFooter className="flex gap-2">
             <Button variant="outline" onClick={closeEditForm}>
               <X className="w-4 h-4 mr-2" />
